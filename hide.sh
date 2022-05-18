@@ -26,12 +26,12 @@ do
     secret_value=$( echo "${secret_json}" | jq -r ".${secret_key}" )
     echo d6
     if [[ "${secret_key}" =~ ${key_pattern} || \
-        echo d7
         ! -z "${val_pattern}" && "${secret_value}" =~ ${val_pattern} ]]
     then
-        echo d8
+        echo d7
         echo "::add-mask::${secret_value}"
     fi
-    echo d9
+    echo d8
     [[ "${verbose}" == '1' ]] && echo "  ${secret_key}='${secret_value}'"
 done
+echo d9
