@@ -9,10 +9,16 @@ inputs:
     description: 'Keys matching this pattern will be hidden'
     required: false
     default: 'KEY|SECRET'
+  ignore_case:
+    description: 'Determine case-insensitive matching'
+    required: false
+    default: '1'
 runs:
   using: "composite"
   steps:
+    - run: echo ${BASH_VERSION} && bash --version
+      shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: hide.sh '${{ inputs.secret_json }}' '${{ inputs.key_pattern }}'
+    - run: hide.sh '${{ inputs.secret_json }}' '${{ inputs.key_pattern }}' '${{ inputs.ignore_case }}'
       shell: bash
