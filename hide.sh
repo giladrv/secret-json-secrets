@@ -9,7 +9,7 @@ do
     secret_value=$( echo "${secret_json}" | jq -r ".${secret_key}" )
     if [[ "${secret_key}" =~ ${key_pattern} ]]
     then
-        echo "::add-mask::'${secret_value}'"
+        echo "::add-mask::${secret_value}"
     fi
     echo "${secret_key}='${secret_value}'"
 done
