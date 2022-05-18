@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+# set -euo pipefail
 secret_json="${1}"
 key_pattern="${2}"
 val_pattern="${3}"
