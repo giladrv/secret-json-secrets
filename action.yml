@@ -5,20 +5,28 @@ inputs:
   secret_json:
     description: 'A secret json containing secrets'
     required: true
-  key_pattern:
-    description: 'Keys matching this pattern will be hidden'
-    required: false
-    default: 'KEY|SECRET'
   ignore_case:
     description: 'Determine case-insensitive matching'
     required: false
     default: '1'
+  key_pattern:
+    description: 'Keys matching this pattern will be hidden'
+    required: false
+    default: 'KEY|SECRET'
+  val_pattern:
+    description: 'Values matching this pattern will be hidden'
+    required: false
+    default: ''
+  verbose:
+    description: 'Print debug messages'
+    required: false
+    default: ''
 runs:
   using: "composite"
   steps:
-    - run: echo ${BASH_VERSION} && bash --version
+    - name: 'Init'
+      run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
-    - run: hide.sh '${{ inputs.secret_json }}' '${{ inputs.key_pattern }}' '${{ inputs.ignore_case }}'
+    - name: 'Hide'
+      run: hide.sh '${{ inputs.secret_json }}' '${{ inputs.key_pattern }}' '${{ inputs.val_pattern }}' '${{ inputs.ignore_case }}' '${{ inputs.verbose }}'
       shell: bash
