@@ -1,2 +1,2 @@
 # secret-json-secrets
-Hide secrets defined in a secret Json
+Hide secrets defined in a secret Json.
