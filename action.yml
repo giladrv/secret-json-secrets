@@ -12,7 +12,7 @@ inputs:
   key_pattern:
     description: 'Keys matching this pattern will be hidden'
     required: false
-    default: 'KEY|SECRET'
+    default: 'KEY|SECRET|TOKEN'
   val_pattern:
     description: 'Values matching this pattern will be hidden'
     required: false
